@@ -17,6 +17,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import it.lisik.usosapi.errorhandler.ApiResponseErrorHandler;
 
 import java.io.IOException;
 
@@ -43,6 +44,7 @@ public class OAuthModule extends AbstractModule {
                     public void initialize(HttpRequest request) throws IOException {
                         request.setInterceptor(oAuthParameters);
                         request.setParser(new JsonObjectParser(new JacksonFactory()));
+                        request.setUnsuccessfulResponseHandler(new ApiResponseErrorHandler());
                     }
                 }
         );
