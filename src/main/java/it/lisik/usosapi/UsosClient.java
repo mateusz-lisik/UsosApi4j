@@ -7,8 +7,11 @@ import com.google.inject.Injector;
 import it.lisik.usosapi.credentials.ApplicationCredentials;
 import it.lisik.usosapi.credentials.UserCredentials;
 import it.lisik.usosapi.injectors.OAuthModule;
-import it.lisik.usosapi.api.users.UserInformation;
+import it.lisik.usosapi.api.users.UserInformationService;
 
+/**
+ * Client class for USOS Rest API. Every API call throws Exception that is extending IOException
+ */
 public class UsosClient {
     private final UserCredentials userCredentials;
     private final ApplicationCredentials applicationCredentials;
@@ -38,7 +41,7 @@ public class UsosClient {
         return parameters;
     }
 
-    public UserInformation getUserInformation() {
-        return injector.getInstance(UserInformation.class);
+    public UserInformationService getUserInformationService() {
+        return injector.getInstance(UserInformationService.class);
     }
 }

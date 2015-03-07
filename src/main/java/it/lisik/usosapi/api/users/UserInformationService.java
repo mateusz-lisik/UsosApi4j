@@ -3,8 +3,8 @@ package it.lisik.usosapi.api.users;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import it.lisik.usosapi.api.users.requests.GetSelfUserRequestUrl;
 import it.lisik.usosapi.api.users.user.User;
+import it.lisik.usosapi.api.users.user.requests.*;
 
 import java.io.IOException;
 
@@ -15,15 +15,11 @@ public class UserInformationService extends AbstractService {
         super(requestFactory, applicationUrl);
     }
 
-    public User getCurrentUser() {
-        try {
-            return requestFactory.buildGetRequest(new GetSelfUserRequestUrl(applicationUrl)).execute().parseAs(User.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public User getCurrentUser() throws IOException {
+        return requestFactory.buildGetRequest(new GetSelfUserRequestUrl(applicationUrl)).execute().parseAs(User.class);
     }
 
-    public User getUser(Long userId) {
-        return null;
+    public User getUser(Long userId) throws IOException {
+        return requestFactory.buildGetRequest(new GetUserRequestUrl(applicationUrl, userId)).execute().parseAs(User.class);
     }
 }
