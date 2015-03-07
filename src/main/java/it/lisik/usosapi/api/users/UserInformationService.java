@@ -3,6 +3,7 @@ package it.lisik.usosapi.api.users;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import it.lisik.usosapi.api.AbstractService;
 import it.lisik.usosapi.api.users.user.User;
 import it.lisik.usosapi.api.users.user.requests.*;
 

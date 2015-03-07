@@ -1,4 +1,4 @@
-package it.lisik.usosapi.api.users;
+package it.lisik.usosapi.api;
 
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.inject.Inject;
