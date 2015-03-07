@@ -1,4 +1,4 @@
-package it.lisik.usosapi.api.users.requests;
+package it.lisik.usosapi.api.users.user.requests;
 
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.util.Key;

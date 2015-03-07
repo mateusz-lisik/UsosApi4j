@@ -8,10 +8,10 @@ import it.lisik.usosapi.api.users.user.User;
 
 import java.io.IOException;
 
-public class UserInformation extends AbstractService {
+public class UserInformationService extends AbstractService {
 
     @Inject
-    public UserInformation(HttpRequestFactory requestFactory, @Named("ApplicationUrl") String applicationUrl) {
+    public UserInformationService(HttpRequestFactory requestFactory, @Named("ApplicationUrl") String applicationUrl) {
         super(requestFactory, applicationUrl);
     }
 
