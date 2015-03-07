@@ -1,4 +1,4 @@
-package it.lisik.usosapi.api.users.user;
+package it.lisik.usosapi.api.users.models;
 
 import com.google.api.client.util.NullValue;
 import com.google.api.client.util.Value;

@@ -1,4 +1,4 @@
-package it.lisik.usosapi.api.users.user;
+package it.lisik.usosapi.api.users.models;
 
 import com.google.api.client.util.Key;
 
@@ -26,6 +26,7 @@ public class User {
 
     /**
      * Returns Middle Names separated by space or null if user doesn't have second name
+     *
      * @return Middle Names
      */
     public String getMiddleNames() {
