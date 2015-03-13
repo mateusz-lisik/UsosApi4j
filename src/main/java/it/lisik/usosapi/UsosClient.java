@@ -4,6 +4,7 @@ import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.auth.oauth.OAuthParameters;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import it.lisik.usosapi.api.courses.CoursesInformationService;
 import it.lisik.usosapi.credentials.ApplicationCredentials;
 import it.lisik.usosapi.credentials.UserCredentials;
 import it.lisik.usosapi.injectors.OAuthModule;
@@ -44,4 +45,9 @@ public class UsosClient {
     public UserInformationService getUserInformationService() {
         return injector.getInstance(UserInformationService.class);
     }
+
+    public CoursesInformationService getCoursesInformationService() {
+        return injector.getInstance(CoursesInformationService.class);
+    }
+
 }
