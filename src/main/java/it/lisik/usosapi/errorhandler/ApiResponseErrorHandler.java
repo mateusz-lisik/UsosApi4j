@@ -20,8 +20,10 @@ public class ApiResponseErrorHandler implements HttpUnsuccessfulResponseHandler 
                 final JsonNode jsonNode = mapper.readTree(response.getContent());
                 final String errorMessage = jsonNode.get("message").asText(jsonNode.toString());
                 if (errorMessage.equals("Invalid signature.")) {
-                    throw new OAuthUnauthorizedException(errorMessage + " This error may occur when access token + secret" +
-                            " and consumer key + secret pair are not valid.");
+                    throw new OAuthUnauthorizedException(
+                            errorMessage + " This error may occur when access token + secret" +
+                                    " and consumer key + secret pair are not valid."
+                    );
                 }
                 throw new OAuthUnauthorizedException(errorMessage);
         }
