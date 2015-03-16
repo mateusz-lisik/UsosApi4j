@@ -5,7 +5,8 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import it.lisik.usosapi.api.AbstractService;
 import it.lisik.usosapi.api.users.models.User;
-import it.lisik.usosapi.api.users.requests.*;
+import it.lisik.usosapi.api.users.requests.GetSelfUserRequestUrl;
+import it.lisik.usosapi.api.users.requests.GetUserRequestUrl;
 
 import java.io.IOException;
 

@@ -4,22 +4,34 @@ import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.auth.oauth.OAuthParameters;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import it.lisik.usosapi.api.apiserver.ApiServerInformationService;
 import it.lisik.usosapi.api.courses.CoursesInformationService;
+import it.lisik.usosapi.api.users.UserInformationService;
 import it.lisik.usosapi.credentials.ApplicationCredentials;
 import it.lisik.usosapi.credentials.UserCredentials;
 import it.lisik.usosapi.injectors.OAuthModule;
-import it.lisik.usosapi.api.users.UserInformationService;
 
-/**
- * Client class for USOS Rest API. Every API call throws Exception that is extending IOException
- */
+import javax.annotation.Nullable;
+
 public class UsosClient {
     private final UserCredentials userCredentials;
     private final ApplicationCredentials applicationCredentials;
     private final OAuthParameters oAuthParameters;
     private final Injector injector;
 
-    public UsosClient(UserCredentials userCredentials, ApplicationCredentials applicationCredentials) {
+    /**
+     * Creates USOS Client. {@link UserCredentials} are optional, but only minimal subset of APIs can be called without it.
+     * If you try to access such API without {@link UserCredentials}
+     * {@link it.lisik.usosapi.errorhandler.exceptions.OAuthUnauthorizedException} will be thrown
+     * <p/>
+     * APIs than don't require UserCredentials are marked as {@link it.lisik.usosapi.api.UserTokenIgnored}
+     * Some APIs return more specitic information when UserCredentials are provided, those are marked as
+     * {@link it.lisik.usosapi.api.UserTokenOptional}
+     *
+     * @param userCredentials        - user credentials obtained via OAuth
+     * @param applicationCredentials - Consumer Key and Secret obtained via registration your app in USOS
+     */
+    public UsosClient(@Nullable UserCredentials userCredentials, ApplicationCredentials applicationCredentials) {
         this.userCredentials = userCredentials;
         this.applicationCredentials = applicationCredentials;
         this.oAuthParameters = prepareOAuthParameters();
@@ -50,4 +62,12 @@ public class UsosClient {
         return injector.getInstance(CoursesInformationService.class);
     }
 
+    /**
+     * These API methods allow you to access information on the USOS API server installation, and also retrieve some
+     * basic data on all the other official USOS API installations.
+     * @return ApiServerInformationService
+     */
+    public ApiServerInformationService getApiServerInformationService() {
+        return injector.getInstance(ApiServerInformationService.class);
+    }
 }
