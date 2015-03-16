@@ -1,9 +1,3 @@
-/*
- * Created by IntelliJ IDEA.
- * User: mateusz
- * Date: 02.03.2015
- * Time: 21:41
- */
 package it.lisik.usosapi.injectors;
 
 import com.google.api.client.auth.oauth.OAuthParameters;
