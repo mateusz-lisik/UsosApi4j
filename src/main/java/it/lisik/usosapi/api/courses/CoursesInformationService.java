@@ -7,7 +7,6 @@ import it.lisik.usosapi.api.AbstractService;
 import it.lisik.usosapi.api.courses.models.CourseEdition;
 import it.lisik.usosapi.api.courses.models.CourseEditionsResponse;
 import it.lisik.usosapi.api.courses.requests.GetCurrentUserCoursesOrTerms;
-import it.lisik.usosapi.api.terms.models.Term;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -33,10 +32,10 @@ public class CoursesInformationService extends AbstractService {
     public Map<String, List<CourseEdition>> getCourseEditionsMapForCurrentUser(boolean activeOnly) throws IOException {
         return getCourseEditionsForCurrentUser(activeOnly).getCourseEditions();
     }
-
-    public List<Term> getTermsListForCurrentUser(boolean activeOnly) {
-        return null;
-    }
+//
+//    public List<Term> getTermsListForCurrentUser(boolean activeOnly) {
+//        return null;
+//    }
 
     private CourseEditionsResponse getCourseEditionsForCurrentUser(boolean activeOnly) throws IOException {
         return requestFactory.buildGetRequest(
