@@ -4,7 +4,7 @@ import com.google.api.client.http.GenericUrl;
 import com.google.api.client.util.Key;
 
 public class GetCurrentUserCoursesOrTerms extends GenericUrl {
-    public static final String SERVICE_URL = "/services/courses/user";
+    public static final String SERVICE_URL = "services/courses/user";
     @Key
     private final String fields;
     @Key("active_terms_only")

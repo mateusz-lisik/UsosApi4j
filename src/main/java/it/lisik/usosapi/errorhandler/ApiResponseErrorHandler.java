@@ -20,6 +20,13 @@ public class ApiResponseErrorHandler implements HttpUnsuccessfulResponseHandler 
                 final JsonNode jsonNode = mapper.readTree(response.getContent());
                 final String errorMessage = jsonNode.get("message").asText(jsonNode.toString());
                 if (errorMessage.equals("Invalid signature.")) {
+                    if (request.getUrl().getRawPath().startsWith("//")) {
+                        throw new OAuthUnauthorizedException(
+                                errorMessage + " This error may occur when url is malformed" +
+                                        " address couldn't contain double slashes in path.\n" +
+                                        "Requested url: " + request.getUrl().toString()
+                        );
+                    }
                     throw new OAuthUnauthorizedException(
                             errorMessage + " This error may occur when access token + secret" +
                                     " and consumer key + secret pair are not valid."
