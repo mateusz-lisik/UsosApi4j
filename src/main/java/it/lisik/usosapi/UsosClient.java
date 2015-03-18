@@ -52,11 +52,11 @@ public class UsosClient {
     private OAuthParameters prepareOAuthParameters() {
         OAuthHmacSigner signer = new OAuthHmacSigner();
         OAuthParameters parameters = new OAuthParameters();
-        signer.tokenSharedSecret = userCredentials.getSecret();
-        signer.clientSharedSecret = applicationCredentials.getSecret();
+        signer.tokenSharedSecret = userCredentials != null ? userCredentials.getSecret() : null;
+        signer.clientSharedSecret = applicationCredentials != null ? applicationCredentials.getSecret() : null;
         parameters.signer = signer;
-        parameters.consumerKey = applicationCredentials.getConsumerKey();
-        parameters.token = userCredentials.getToken();
+        parameters.consumerKey = applicationCredentials != null ? applicationCredentials.getConsumerKey() : null;
+        parameters.token = userCredentials != null ? userCredentials.getToken() : null;
         return parameters;
     }
 

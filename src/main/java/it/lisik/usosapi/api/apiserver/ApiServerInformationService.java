@@ -4,7 +4,7 @@ import com.google.api.client.http.HttpRequestFactory;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import it.lisik.usosapi.api.AbstractService;
-import it.lisik.usosapi.api.UserTokenIgnored;
+import it.lisik.usosapi.api.AnonymousAccess;
 import it.lisik.usosapi.api.UserTokenOptional;
 import it.lisik.usosapi.api.apiserver.models.ApiConsumerInformation;
 import it.lisik.usosapi.api.apiserver.models.InstallationInformation;
@@ -30,14 +30,14 @@ public class ApiServerInformationService extends AbstractService {
         ).execute().parseAs(ApiConsumerInformation.class);
     }
 
-    @UserTokenIgnored
+    @AnonymousAccess
     public InstallationInformation getInstallationInformation() throws IOException {
         return requestFactory.buildGetRequest(
                 new GetInstallationInformation(applicationUrl)
         ).execute().parseAs(InstallationInformation.class);
     }
 
-    @UserTokenIgnored
+    @AnonymousAccess
     public List<InstallationInformation> getInstallationsInformation() throws IOException {
         final InstallationInformation[] installationInformations = requestFactory.buildGetRequest(
                 new GetInstallationInformations(applicationUrl)
