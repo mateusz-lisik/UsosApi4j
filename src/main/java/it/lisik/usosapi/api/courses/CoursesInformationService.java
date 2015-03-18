@@ -30,11 +30,6 @@ public class CoursesInformationService extends AbstractService {
         return courseEditions;
     }
 
-    /**
-     * @param activeOnly - get only active terms
-     * @return Map of <TermId, CourseEdition>
-     * @throws IOException
-     */
     public Map<String, List<CourseEdition>> getCourseEditionsMapForCurrentUser(boolean activeOnly) throws IOException {
         return getCourseEditionsForCurrentUser(activeOnly).getCourseEditions();
     }

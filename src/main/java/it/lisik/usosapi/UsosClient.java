@@ -20,13 +20,19 @@ public class UsosClient {
     private final Injector injector;
 
     /**
+     * <p>
      * Creates USOS Client. {@link UserCredentials} are optional, but only minimal subset of APIs can be called without it.
      * If you try to access such API without {@link UserCredentials}
      * {@link it.lisik.usosapi.errorhandler.exceptions.OAuthUnauthorizedException} will be thrown
-     * <p/>
+     * </p>
+     * <p>
      * APIs than don't require UserCredentials are marked as {@link it.lisik.usosapi.api.UserTokenIgnored}
-     * Some APIs return more specitic information when UserCredentials are provided, those are marked as
+     * Some APIs return more specific information when UserCredentials are provided, those are marked as
      * {@link it.lisik.usosapi.api.UserTokenOptional}
+     * </p>
+     * Some of APIs can be called without any credentials whatsoever. In such case only thing you need is to provide
+     * applicationUrl in {@link it.lisik.usosapi.credentials.ApplicationCredentials} constructor. APIs that support that
+     * are annotated with {@link it.lisik.usosapi.api.AnonymousAccess}
      *
      * @param userCredentials        - user credentials obtained via OAuth
      * @param applicationCredentials - Consumer Key and Secret obtained via registration your app in USOS
@@ -65,6 +71,7 @@ public class UsosClient {
     /**
      * These API methods allow you to access information on the USOS API server installation, and also retrieve some
      * basic data on all the other official USOS API installations.
+     *
      * @return ApiServerInformationService
      */
     public ApiServerInformationService getApiServerInformationService() {
