@@ -14,6 +14,9 @@ public class User {
     @Key("sex")
     private Gender gender;
 
+    @Key("has_photo")
+    private boolean hasPhoto;
+
     public User() {
 
     }
@@ -24,9 +27,16 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isHasPhoto() {
+        return hasPhoto;
+    }
+
+    public String getPhoto(PhotoSize size) {
+        return null;
+    }
+
     /**
      * Returns Middle Names separated by space or null if user doesn't have second name
-     *
      * @return Middle Names
      */
     public String getMiddleNames() {
