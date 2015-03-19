@@ -32,10 +32,6 @@ public class CoursesInformationService extends AbstractService {
     public Map<String, List<CourseEdition>> getCourseEditionsMapForCurrentUser(boolean activeOnly) throws IOException {
         return getCourseEditionsForCurrentUser(activeOnly).getCourseEditions();
     }
-//
-//    public List<Term> getTermsListForCurrentUser(boolean activeOnly) {
-//        return null;
-//    }
 
     private CourseEditionsResponse getCourseEditionsForCurrentUser(boolean activeOnly) throws IOException {
         return requestFactory.buildGetRequest(
