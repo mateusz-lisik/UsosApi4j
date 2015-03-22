@@ -6,6 +6,8 @@ import com.google.inject.name.Named;
 import it.lisik.usosapi.api.AbstractService;
 import it.lisik.usosapi.api.courses.models.CourseEdition;
 import it.lisik.usosapi.api.courses.models.CourseEditionsResponse;
+import it.lisik.usosapi.api.courses.models.CourseUnit;
+import it.lisik.usosapi.api.courses.requests.GetCourseUnit;
 import it.lisik.usosapi.api.courses.requests.GetCurrentUserCoursesOrTerms;
 
 import java.io.IOException;
@@ -31,6 +33,12 @@ public class CoursesInformationService extends AbstractService {
 
     public Map<String, List<CourseEdition>> getCourseEditionsMapForCurrentUser(boolean activeOnly) throws IOException {
         return getCourseEditionsForCurrentUser(activeOnly).getCourseEditions();
+    }
+
+    public CourseUnit getCourseUnit(String unitId) throws IOException {
+        return requestFactory.buildGetRequest(
+                new GetCourseUnit(applicationUrl, unitId)
+        ).execute().parseAs(CourseUnit.class);
     }
 
     private CourseEditionsResponse getCourseEditionsForCurrentUser(boolean activeOnly) throws IOException {
