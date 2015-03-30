@@ -6,6 +6,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import it.lisik.usosapi.api.apiserver.ApiServerInformationService;
 import it.lisik.usosapi.api.courses.CoursesInformationService;
+import it.lisik.usosapi.api.grades.GradesInformationService;
 import it.lisik.usosapi.api.users.UserInformationService;
 import it.lisik.usosapi.credentials.ApplicationCredentials;
 import it.lisik.usosapi.credentials.UserCredentials;
@@ -66,6 +67,10 @@ public class UsosClient {
 
     public CoursesInformationService getCoursesInformationService() {
         return injector.getInstance(CoursesInformationService.class);
+    }
+
+    public GradesInformationService getGradesInformationService() {
+        return injector.getInstance(GradesInformationService.class);
     }
 
     /**
