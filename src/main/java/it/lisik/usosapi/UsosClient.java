@@ -10,6 +10,7 @@ import it.lisik.usosapi.api.grades.GradesInformationService;
 import it.lisik.usosapi.api.users.UserInformationService;
 import it.lisik.usosapi.credentials.ApplicationCredentials;
 import it.lisik.usosapi.credentials.UserCredentials;
+import it.lisik.usosapi.injectors.ClientModule;
 import it.lisik.usosapi.injectors.OAuthModule;
 
 import javax.annotation.Nullable;
@@ -43,6 +44,7 @@ public class UsosClient {
         this.applicationCredentials = applicationCredentials;
         this.oAuthParameters = prepareOAuthParameters();
         this.injector = Guice.createInjector(
+                new ClientModule(this),
                 new OAuthModule(
                         applicationCredentials.getApplicationUrl(),
                         oAuthParameters
