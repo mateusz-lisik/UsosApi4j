@@ -1,13 +1,25 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
 sourceCompatibility = 1.7
-version = '0.1-SNAPSHOT'
+version = '0.1.5-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'it.lisik'
+            artifactId 'usosapi'
+
+            from components.java
+        }
+    }
 }
 
 dependencies {
