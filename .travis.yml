@@ -5,13 +5,3 @@ jdk:
 
 after_success:
 - gradle jacocoTestReport coveralls
-
-addons:
-  coverity_scan:
-    project:
-      name: "matteprl/UsosApi4j"
-      description: "Build submitted via Travis CI"
-    notification_email: mateusz@lisik.it
-    build_command_prepend: "gradle clean"
-    build_command:   "gradle compileJava"
-    branch_pattern: develop
